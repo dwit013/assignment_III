@@ -1,36 +1,36 @@
 from collections import Counter
 
 file = open('shakespeare.txt','r')
-str = file.read()
+strings = file.read()
 
-lst = str.split()
+splt = strings.split()
 
-x = [x for x in lst if x != ',']
-lst= [lst for lst in x if lst != '.']
-x= [x for x in lst if x != '?']
-lst= [lst for lst in x if lst != '!']
-x = [x for x in lst if x != ',']
-lst= [lst for lst in x if lst != ':']
-x = [x for x in lst if x != ';']
+temp = [temp for temp in splt if temp != ',']
+splt= [splt for splt in temp if splt != '.']
+temp= [temp for temp in splt if temp != '?']
+splt= [splt for splt in temp if splt != '!']
+temp = [temp for temp in splt if temp != ',']
+splt= [splt for splt in temp if splt != ':']
+temp = [temp for temp in splt if temp != ';']
 
-lst = [lst.lower() for lst in x]
+splt = [splt.lower() for splt in temp]
 
 count = 0
 
-for i in range(0,len(lst)):
-    if len(lst[i])==3:
+for i in range(0,len(splt)):
+    if len(splt[i])==3:
         count = count +1
 
 
 print("Total number of 3 letter words is ",count)
 
-c = Counter(lst)
+c = Counter(splt)
 
-max = dict(c.most_common(20))
-min = dict(c.most_common()[-20:])
+max_repeated = dict(c.most_common(20))
+min_repeated = dict(c.most_common()[-20:])
 
 print("\n20 most frequent words")
-print(max)
+print(max_repeated)
 
 print("\n20 least frequent words")
-print(min)
+print(min_repeated)
