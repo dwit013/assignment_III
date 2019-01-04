@@ -1,27 +1,27 @@
 while True:
-    fname = input("Enter the file to be read: ")
+    filename = input("Enter the file to be read: ")
     try:
-        fhand = open(fname, "r")
+        fileo = open(filename, "r")
         break
     except:
         print("No such file found!\n Please try again!!!\n")
 count = dict()
-for line in fhand:
+for line in fileo:
     for word in line.split():
         if len(word) < 2 and (word.lower() < 'a' or word.lower() > 'z'):
             continue
         count[word] = count.get(word, 0) + 1
 
-number = 0
+no = 0
 for x in count.keys():
     if len(x) == 3:
-        number = number + count[x]
-print("The total number of three lettered words is: ", number)
+        no = no + count[x]
+print("The total number of three lettered words is: ", no)
 
 
-lar_word = sorted(count, key=count.get, reverse=True)[:20]
+large_word = sorted(count, key=count.get, reverse=True)[:20]
 small_word = sorted(count, key=count.get, reverse=False)[:20]
 
-print("The 20 most frequent words are: ", lar_word)
+print("The 20 most frequent words are: ", large_word)
 print("The 20 least frequent words are: ", small_word)
-fhand.close()
+fileo.close()
